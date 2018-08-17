@@ -128,7 +128,11 @@ Link to a document with id 17 with link text "File": `{{dmsf(17, File)}}`
 
 Link to the details of a document with id 17: `{{dmsfd(17)}}`
 
+Link to the details of a document with id 17 with link text "Details": `{{dmsfd(17, Details)}}`
+
 Link to the description of a document with id 17: `{{dmsfdesc(17)}}`
+
+Link to the version of a document with id 17: `{{dmsfversion(17)}}`
 
 Link to the preview of 5 lines from a document with id 17: `{{dmsft(17, 5)}}`
 

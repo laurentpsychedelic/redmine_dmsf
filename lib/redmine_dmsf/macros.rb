@@ -101,6 +101,20 @@ Redmine::WikiFormatting::Macros.register do
     end
   end
 
+  # dmsfversion - link to the document's version
+  desc "Wiki link to DMSF document version:\n\n" +
+         "{{dmsfversion(document_id)}}\n\n" +
+         "_document_id_ can be found in the document's details."
+  macro :dmsfversion do |obj, args|
+    raise ArgumentError if args.length < 1 # Requires file id
+    file = DmsfFile.visible.find args[0].strip
+    if User.current && User.current.allowed_to?(:view_dmsf_files, file.project)
+      return textilizable(file.version)
+    else
+      raise l(:notice_not_authorized)
+    end
+  end
+
   # dmsft - link to the document's content preview
   desc "Wiki link to DMSF document's content preview:\n\n" +
            "{{dmsft(file_id)}}\n\n" +
